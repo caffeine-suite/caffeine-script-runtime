@@ -7,7 +7,15 @@ module.exports = suite:
   each: ->
     test "each array123, array123",   -> assert.same array123,  Caf.each array123, array123, ->
     test "each objectAbc, objectAbc", -> assert.same objectAbc, Caf.each objectAbc, objectAbc, ->
-    test "each objectAbc, null",      -> assert.same null,      Caf.each objectAbc, objectAbc, ->
+    test "each objectAbc, null",      -> assert.same null,      Caf.each objectAbc, null, ->
+
+    test "eachFull array123, array123",   -> assert.same array123,  Caf.eachFull array123, array123, ->
+    test "eachFull objectAbc, objectAbc", -> assert.same objectAbc, Caf.eachFull objectAbc, objectAbc, ->
+    test "eachFull objectAbc, null",      -> assert.same null,      Caf.eachFull objectAbc, null, ->
+
+    test "find array123, array123",   -> assert.same array123,  Caf.find array123,  array123, (_1, _2, r) -> [false, r]
+    test "find objectAbc, objectAbc", -> assert.same objectAbc, Caf.find objectAbc, objectAbc, (_1, _2, r) -> [false, r]
+    test "find objectAbc, null",      -> assert.same null,      Caf.find objectAbc, null, (_1, _2, r) -> [false, r]
 
     test "array123/objectAbc: each v from ... do count += v", ->
       count = 0

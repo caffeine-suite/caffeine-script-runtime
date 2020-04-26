@@ -1,7 +1,6 @@
 require('./global');
 
-const {find, each} = require('./iteration');
-const {isFunction, isPlainArray} = require('./types');
+const {isFunction, isPlainArray, exists} = require('./types');
 const {defModule} = require('./modules');
 const {defClass, getSuper} = require('./classes');
 
@@ -14,7 +13,7 @@ module.exports = {
   defClass,
   getSuper,
 
-  exists:   (a) => a != null,
+  exists,
   isIn:     (a, b) => b != null ? 0 <= b.indexOf(a) : false,
   mod:      (a, b) => (+a % (b = +b) + b) % b,
   div:      (a, b) => Math.floor(a / b),
@@ -31,6 +30,5 @@ module.exports = {
             : a
       : '',
 
-  find,
-  each
+  ...require('./iteration')
 }
